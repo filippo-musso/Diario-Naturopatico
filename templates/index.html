@@ -1,12 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Meta tags for character set and viewport -->
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Diario Naturopatico</title>
+        <!-- Styles for the page -->
+        <style>
+            /* Styling for the body and its elements */
+            body {
+                font-family: "Arial", sans-serif;
+                margin: 20px;
+                padding: 20px;
+            }
+
+            /* Styling for the main heading */
+            h1 {
+                color: #333;
+            }
+
+            /* Form styling */
+            form {
+                margin-bottom: 20px;
+            }
+
+            /* Label styling */
+            label {
+                display: block;
+                margin-bottom: 5px;
+                color: #555;
+            }
+
+            /* Input and textarea styling */
+            input[type="text"],
+            textarea {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                box-sizing: border-box;
+            }
+
+            /* Button styling */
+            button {
+                padding: 10px;
+                background-color: #4caf50;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+
+            /* Button hover effect */
+            button:hover {
+                background-color: #45a049;
+            }
+
+            /* List styling */
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            /* List item styling */
+            li {
+                margin-bottom: 5px;
+            }
+
+            /* Link styling */
+            a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+            /* Hover effect for links */
+            a:hover {
+                text-decoration: underline;
+            }
+        </style>
     </head>
     <body>
+        <!-- Main heading -->
         <h1>Diario Naturopatico</h1>
+        <!-- Form for inserting data -->
         <form action="/inserisci_dati" method="post">
             <label for="patologia">Patologia:</label>
             <input type="text" name="patologia" required /><br />
@@ -23,16 +97,23 @@
             <button type="submit">Inserisci Dati</button>
         </form>
 
+        <!-- Form for searching by patologia -->
         <form action="/cerca" method="get">
-            <label for="query">Cerca:</label>
+            <label for="query">Cerca patologia:</label>
             <input type="text" name="query" required />
             <button type="submit">Cerca</button>
         </form>
 
+        <!-- Form for searching by sintomo -->
         <form action="/cerca_sintomo" method="get">
-            <label for="sintomo">Cerca per Sintomo:</label>
+            <label for="sintomo">Cerca sintomi:</label>
             <input type="text" name="sintomo" required />
             <button type="submit">Cerca</button>
+        </form>
+
+        <!-- Form for clearing the database -->
+        <form action="/pulisci_database" method="post">
+            <button type="submit">Pulisci Database</button>
         </form>
     </body>
 </html>
