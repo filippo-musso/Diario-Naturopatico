@@ -1,35 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Meta tags for character set and viewport -->
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Risultati Ricerca per Sintomo</title>
+        <!-- Styles for the page -->
+        <style>
+            /* Styling for the body and its elements */
+            body {
+                font-family: "Arial", sans-serif;
+                margin: 20px;
+                padding: 20px;
+            }
+
+            /* Styling for the main heading */
+            h1 {
+                color: #333;
+            }
+
+            /* Form styling */
+            form {
+                margin-bottom: 20px;
+            }
+
+            /* Label styling */
+            label {
+                display: block;
+                margin-bottom: 5px;
+                color: #555;
+            }
+
+            /* Input and textarea styling */
+            input[type="text"],
+            textarea {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                box-sizing: border-box;
+            }
+
+            /* Button styling */
+            button {
+                padding: 10px;
+                background-color: #4caf50;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+
+            /* Button hover effect */
+            button:hover {
+                background-color: #45a049;
+            }
+
+            /* List styling */
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            /* List item styling */
+            li {
+                margin-bottom: 5px;
+            }
+
+            /* Link styling */
+            a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+            /* Hover effect for links */
+            a:hover {
+                text-decoration: underline;
+            }
+        </style>
     </head>
     <body>
+        <!-- Main heading -->
         <h1>Risultati Ricerca per Sintomo</h1>
 
+        <!-- Displaying the sintomo query -->
         <p>Risultati per il sintomo: <strong>{{ sintomo_query }}</strong></p>
 
+        <!-- Displaying patologie if available -->
         {% if patologie %}
         <h2>Patologie Collegate</h2>
-        <ul>
+        <ol>
             {% for patologia in patologie %}
             <li>
+                <!-- Displaying patologia name and description -->
                 {{ patologia.nome }} - {{ patologia.descrizione }}
-
-                <!-- Aggiungi un pulsante per visualizzare i dettagli della patologia -->
                 <a
                     href="{{ url_for('dettagli_patologia', patologia_id=patologia.id) }}"
                     >Dettagli</a
                 >
             </li>
             {% endfor %}
-        </ul>
+        </ol>
         {% else %}
+        <!-- Message when no patologie found for the sintomo -->
         <p>Nessuna patologia trovata per il sintomo inserito.</p>
         {% endif %}
 
-        <!-- Aggiungi un pulsante per tornare alla schermata principale -->
+        <!-- Link to return to the main screen -->
         <a href="{{ url_for('index') }}">Torna alla schermata principale</a>
     </body>
 </html>

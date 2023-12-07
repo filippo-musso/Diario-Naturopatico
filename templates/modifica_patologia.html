@@ -4,7 +4,7 @@
         <!-- Meta tags for character set and viewport -->
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Risultati Ricerca</title>
+        <title>Modifica Patologia</title>
         <!-- Styles for the page -->
         <style>
             /* Styling for the body and its elements */
@@ -79,55 +79,51 @@
     </head>
     <body>
         <!-- Main heading -->
-        <h1>Risultati Ricerca</h1>
+        <h1>Modifica Patologia</h1>
 
-        <!-- Displaying patologie if available -->
-        {% if patologie %}
-        <ol>
-            {% for patologia in patologie %}
-            <li>
-                <!-- Patologia name and description -->
-                <h2>{{ patologia.nome }}</h2>
-                <p>{{ patologia.descrizione }}</p>
+        <!-- Form to save modifications -->
+        <form
+            action="{{ url_for('salva_modifiche_patologia', patologia_id=patologia.id) }}"
+            method="post"
+        >
+            <!-- Input for patologia name -->
+            <label for="patologia">Patologia:</label>
+            <input
+                type="text"
+                name="patologia"
+                value="{{ patologia.nome }}"
+                required
+            /><br />
 
-                <!-- Displaying sintomi if available -->
-                {% if patologia.sintomi %}
-                <h3>Sintomi</h3>
-                <ul>
-                    {% for sintomo in patologia.sintomi %}
-                    <!-- Displaying each sintomo -->
-                    <li>{{ sintomo.nome }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
+            <!-- Input for sintomi separated by a comma -->
+            <label for="sintomi">Sintomi (separati da virgola):</label>
+            <input
+                type="text"
+                name="sintomi"
+                value="{{ sintomi_nomi }}"
+                required
+            /><br />
 
-                <!-- Displaying rimedi if available -->
-                {% if patologia.rimedi %}
-                <h3>Rimedi</h3>
-                <ul>
-                    {% for rimedio in patologia.rimedi %}
-                    <!-- Displaying each rimedio -->
-                    <li>{{ rimedio.nome }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
+            <!-- Input for rimedi separated by a comma -->
+            <label for="rimedi">Rimedi (separati da virgola):</label>
+            <input
+                type="text"
+                name="rimedi"
+                value="{{ rimedi_nomi }}"
+                required
+            /><br />
 
-                <!-- Form to modify patologia -->
-                <form
-                    action="{{ url_for('modifica_patologia', patologia_id=patologia.id) }}"
-                    method="get"
-                >
-                    <button type="submit">Modifica Patologia</button>
-                </form>
-            </li>
-            {% endfor %}
-        </ol>
-        {% else %}
-        <!-- Message when no patologie found -->
-        <p>La patologia inserita non esiste nel database.</p>
-        {% endif %}
+            <!-- Textarea for patologia description -->
+            <label for="descrizione">Descrizione:</label>
+            <textarea name="descrizione" rows="4" cols="50">
+{{ patologia.descrizione }}</textarea
+            ><br />
 
-        <!-- Link to return to the main screen -->
-        <a href="{{ url_for('index') }}">Torna alla schermata principale</a>
+            <!-- Button to submit form and save modifications -->
+            <button type="submit">Salva Modifiche</button>
+        </form>
+
+        <!-- Link to return to the search results -->
+        <a href="{{ url_for('cerca') }}">Torna ai Risultati</a>
     </body>
 </html>
