@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Risultati Ricerca</title>
+    </head>
+    <body>
+        <h1>Risultati Ricerca</h1>
+
+        {% for patologia in patologie %}
+        <h2>{{ patologia.nome }}</h2>
+        <p>{{ patologia.descrizione }}</p>
+
+        {% if patologia.sintomi %}
+        <h3>Sintomi</h3>
+        <ul>
+            {% for sintomo in patologia.sintomi %}
+            <li>{{ sintomo.nome }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %} {% if patologia.rimedi %}
+        <h3>Rimedi</h3>
+        <ul>
+            {% for rimedio in patologia.rimedi %}
+            <li>{{ rimedio.nome }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %} {% endfor %}
+
+        <a href="{{ url_for('index') }}">Torna alla schermata principale</a>
+    </body>
+</html>

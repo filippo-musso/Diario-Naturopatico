@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Risultati Ricerca per Sintomo</title>
+    </head>
+    <body>
+        <h1>Risultati Ricerca per Sintomo</h1>
+
+        <p>Risultati per il sintomo: <strong>{{ sintomo_query }}</strong></p>
+
+        {% if patologie %}
+        <h2>Patologie Collegate</h2>
+        <ul>
+            {% for patologia in patologie %}
+            <li>{{ patologia.nome }} - {{ patologia.descrizione }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Nessuna patologia trovata per il sintomo inserito.</p>
+        {% endif %}
+
+        <!-- Aggiungi un pulsante per tornare alla schermata principale -->
+        <a href="{{ url_for('index') }}">Torna alla schermata principale</a>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Diario Naturopatico</title>
+    </head>
+    <body>
+        <h1>Diario Naturopatico</h1>
+        <form action="/inserisci_dati" method="post">
+            <label for="patologia">Patologia:</label>
+            <input type="text" name="patologia" required /><br />
+
+            <label for="sintomi">Sintomi (separati da virgola):</label>
+            <input type="text" name="sintomi" required /><br />
+
+            <label for="rimedi">Rimedi (separati da virgola):</label>
+            <input type="text" name="rimedi" required /><br />
+
+            <label for="descrizione">Descrizione:</label>
+            <textarea name="descrizione" rows="4" cols="50"></textarea><br />
+
+            <button type="submit">Inserisci Dati</button>
+        </form>
+
+        <form action="/cerca" method="get">
+            <label for="query">Cerca:</label>
+            <input type="text" name="query" required />
+            <button type="submit">Cerca</button>
+        </form>
+
+        <form action="/cerca_sintomo" method="get">
+            <label for="sintomo">Cerca per Sintomo:</label>
+            <input type="text" name="sintomo" required />
+            <button type="submit">Cerca</button>
+        </form>
+    </body>
+</html>
