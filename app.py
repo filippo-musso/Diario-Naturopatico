@@ -96,6 +96,11 @@ def cerca_sintomo():
 
     return render_template('risultati_sintomo.html', sintomo_query=sintomo_query, patologie=patologie_trovate)
 
+@app.route('/dettagli_patologia/<int:patologia_id>', methods=['GET'])
+def dettagli_patologia(patologia_id):
+    patologia = Patologia.query.get_or_404(patologia_id)
+    return render_template('risultati.html', patologie=[patologia], sintomi=patologia.sintomi, rimedi=patologia.rimedi)
+
 
 
 if __name__ == '__main__':

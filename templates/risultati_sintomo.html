@@ -14,7 +14,15 @@
         <h2>Patologie Collegate</h2>
         <ul>
             {% for patologia in patologie %}
-            <li>{{ patologia.nome }} - {{ patologia.descrizione }}</li>
+            <li>
+                {{ patologia.nome }} - {{ patologia.descrizione }}
+
+                <!-- Aggiungi un pulsante per visualizzare i dettagli della patologia -->
+                <a
+                    href="{{ url_for('dettagli_patologia', patologia_id=patologia.id) }}"
+                    >Dettagli</a
+                >
+            </li>
             {% endfor %}
         </ul>
         {% else %}
